@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './PeopleList.module.css'
 
 const PeopleList = ({ people }) => {
-  console.log('peopleList', people)
   return (
     <ul className={styles.list__container}>
       {people.map(({ id, name, img }) => (
