@@ -1,0 +1,10 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.header {
+  color: blue;
+  font-size: 100px;
+}
