@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ErrorMessage from '@components/ErrorMessage/ErrorMessage'
 
 export const withErrorApi = (Viev) => {
   return (props) => {
@@ -7,7 +8,7 @@ export const withErrorApi = (Viev) => {
     return (
       <>
         {errorApi ? (
-          <h2>Errror</h2>
+          <ErrorMessage />
         ) : (
           <Viev setErrorApi={setErrorApi} {...props} />
         )}

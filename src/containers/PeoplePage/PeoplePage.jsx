@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { withErrorApi } from '../../hoc-helpers/withErrorApi'
-import { getApiResourse } from '../../utils/network'
-import { API_PEOPLE } from '../../constans/api'
-import { getPeopleId, getPeopleImage } from '../../services/getPeopleData'
-import PeopleList from '../../components/PeoplePage/PeopleList'
+import { withErrorApi } from '@hoc-helpers/withErrorApi'
+import { getApiResourse } from '@utils/network'
+import { API_PEOPLE } from '@constans/api'
+import { getPeopleId, getPeopleImage } from '@services/getPeopleData'
+import PeopleList from '@components/PeoplePage/PeopleList'
 
-// import styles from './PeoplePage.module.css'
+import styles from './PeoplePage.module.css'
 
-const PeoplePage = ({setErrorApi}) => {
+const PeoplePage = ({ setErrorApi }) => {
   const [people, setPeople] = useState(null)
 
   const getResourse = async (url) => {
@@ -38,23 +38,10 @@ const PeoplePage = ({setErrorApi}) => {
 
   return (
     <>
-      <h1>Navigation</h1>
+      <h1 className={styles.nav}>Navigation</h1>
       {people && <PeopleList people={people} />}
     </>
   )
 }
 
 export default withErrorApi(PeoplePage)
-
-// return (
-//   <>
-//     {errorApi ? (
-//       <h2 className={styles.h1}>Errror</h2>
-//     ) : (
-//       <>
-//         <h1>Navigation</h1>
-//         {people && <PeopleList people={people} />}
-//       </>
-//     )}
-//   </>
-// )
