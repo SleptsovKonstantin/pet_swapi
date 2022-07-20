@@ -13,7 +13,7 @@ const PeoplePage = ({ setErrorApi }) => {
   const [people, setPeople] = useState(null)
 
   const getResourse = async (url) => {
-    const res = await getApiResourse(url)
+    const res = await getApiResourse(1+url)
 
     if (res) {
       const peopleList = res.results.map(({ name, url }) => {

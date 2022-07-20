@@ -17,8 +17,8 @@ const App = () => {
           People
         </NavLink>
         <Routes>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/people" exact component={PeoplePage} />
+          <Route path="/" exact element={<HomePage/>} />
+          <Route path="/people" exact element={<PeoplePage/>} />
         </Routes>
       </BrowserRouter>
     </>
