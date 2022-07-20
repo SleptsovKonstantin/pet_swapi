@@ -17,6 +17,11 @@ const Header = () => {
             <a>People</a>
           </NavLink>
         </li>
+        <li>
+          <NavLink to="*" exact={'false'}>
+            <a>NotFoundPage</a>
+          </NavLink>
+        </li>
       </ul>
     </div>
   )
