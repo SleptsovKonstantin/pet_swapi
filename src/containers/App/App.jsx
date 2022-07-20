@@ -10,15 +10,15 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <NavLink to="/" exact>
+        <NavLink to="/" exact={'true'}>
           Home
         </NavLink>
-        <NavLink to="/people" exact>
+        <NavLink to="/people" exact={'true'}>
           People
         </NavLink>
         <Routes>
-          <Route path="/" exact element={<HomePage/>} />
-          <Route path="/people" exact element={<PeoplePage/>} />
+          <Route path="/" exact={'true'} element={<HomePage/>} />
+          <Route path="/people" exact={'true'} element={<PeoplePage/>} />
         </Routes>
       </BrowserRouter>
     </>
