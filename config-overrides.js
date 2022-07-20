@@ -7,7 +7,8 @@ module.exports = function override(config, env) {
     '@constans': 'src/constans',
     '@hoc-helpers': 'src/hoc-helpers',
     '@services': 'src/services',
-    '@utils': 'src/utils'
+    '@utils': 'src/utils',
+    '@styles': 'src/styles'
   })(config)
 
   return config

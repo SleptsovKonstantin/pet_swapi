@@ -4,7 +4,7 @@ import {
   SWAPI_PEOPLE,
   GUIDE_IMG_EXTENSION,
   URL_IMG_PERSON
-} from "../constans/api";
+} from "@constans/api";
 
 const getId = (url, category) => {
   const id = url
