@@ -6,11 +6,15 @@ import PeopleList from '@components/PeoplePage/PeopleList'
 import { getApiResourse } from '@utils/network'
 import { API_PEOPLE } from '@constans/api'
 import { getPeopleId, getPeopleImage } from '@services/getPeopleData'
+import { useQueryParams } from '@hooks/useQueryParams';
 
 import styles from '@containers/PeoplePage/PeoplePage.module.css'
 
 const PeoplePage = ({ setErrorApi }) => {
   const [people, setPeople] = useState(null)
+
+  const query = useQueryParams()
+  const queryPage = query.get('page')
 
   const getResourse = async (url) => {
     const res = await getApiResourse(url)

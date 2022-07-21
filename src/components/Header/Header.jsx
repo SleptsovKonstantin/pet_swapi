@@ -13,7 +13,7 @@ const Header = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/people" exact={'true'}>
+          <NavLink to="/people/?page=1" exact={'true'}>
             <a>People</a>
           </NavLink>
         </li>
