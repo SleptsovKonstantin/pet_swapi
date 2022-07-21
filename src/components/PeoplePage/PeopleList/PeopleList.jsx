@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import styles from '@components/PeoplePage/PeopleList/PeopleList.module.css'
 
 const PeopleList = ({ people }) => {
@@ -7,10 +8,10 @@ const PeopleList = ({ people }) => {
     <ul className={styles.list__container}>
       {people.map(({ id, name, img }) => (
         <li key={id} className={styles.list__item}>
-          <a href={'#'}>
+          <Link to={`/people/${id}`}>
             <img className={styles.person__photo} src={img} alt={name} />
             <p>{name}</p>
-          </a>
+          </Link>
         </li>
       ))}
     </ul>

@@ -5,6 +5,14 @@ import {
   GUIDE_IMG_EXTENSION,
   URL_IMG_PERSON
 } from "@constans/api";
+import { SWAPI_PARAM_PAGE } from "../constans/api";
+
+export const getPeoplePageId = url => {
+  const pos = url.lastIndexOf(SWAPI_PARAM_PAGE)
+  const id = url.slice(pos+SWAPI_PARAM_PAGE.length, url.length)
+
+  return Number(id)
+}
 
 const getId = (url, category) => {
   const id = url
