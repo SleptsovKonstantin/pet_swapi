@@ -1,6 +1,7 @@
 import HomePage from '@containers/HomePage'
 import PeoplePage from '@containers/PeoplePage'
 import NotFoundPage from '@containers/NotFoundPage'
+import PersonPage from '@containers/PersonPage'
 
 const routesConfig = [
   {
@@ -11,12 +12,22 @@ const routesConfig = [
   {
     path: '/people',
     exact: true,
-    component: <PeoplePage/>
+    component: <PeoplePage />
+  },
+  {
+    path: '/people/:id',
+    exact: false,
+    component: <PersonPage />
   },
   {
     path: '*',
     exact: false,
-    component: <NotFoundPage/>
+    component: <NotFoundPage />
+  },
+  {
+    path: '/not-found',
+    exact: true,
+    component: <NotFoundPage />
   }
 ];
 

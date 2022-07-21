@@ -13,12 +13,17 @@ const Header = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/people/?page=1" exact={'true'}>
+          <NavLink to="/people/?page=1">
             <a>People</a>
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to="*" exact={'false'}>
+            <a>NotFoundPage</a>
+          </NavLink>
+        </li> */}
+        <li>
+          <NavLink to="/not-found" exact={'true'}>
             <a>NotFoundPage</a>
           </NavLink>
         </li>

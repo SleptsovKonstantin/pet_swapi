@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import { withErrorApi } from '@hoc-helpers/withErrorApi'
 import PeopleList from '@components/PeoplePage/PeopleList'
 import PeopleNavigation from '@components/PeoplePage/PeopleNavigation'
+import { withErrorApi } from '@hoc-helpers/withErrorApi'
 import { getApiResourse, changeHTTP } from '@utils/network'
 import { API_PEOPLE } from '@constans/api'
+import { useQueryParams } from '@hooks/useQueryParams'
 import {
   getPeopleId,
   getPeopleImage,
   getPeoplePageId,
 } from '@services/getPeopleData'
-import { useQueryParams } from '@hooks/useQueryParams'
 
 // import styles from '@containers/PeoplePage/PeoplePage.module.css'
 
