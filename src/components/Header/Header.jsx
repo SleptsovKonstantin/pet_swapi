@@ -8,7 +8,7 @@ const Header = () => {
     <div className={styles.container}>
       <ul className={styles.list__container}>
         <li>
-          <NavLink to="/" exact={'true'}>
+          <NavLink to="/" >
             <a>Home</a>
           </NavLink>
         </li>
@@ -17,11 +17,11 @@ const Header = () => {
             <a>People</a>
           </NavLink>
         </li>
-        {/* <li>
-          <NavLink to="*" exact={'false'}>
-            <a>NotFoundPage</a>
+        <li>
+          <NavLink to="/favorites" >
+            <a>Favorites</a>
           </NavLink>
-        </li> */}
+        </li>
         <li>
           <NavLink to="/not-found" exact={'true'}>
             <a>NotFoundPage</a>

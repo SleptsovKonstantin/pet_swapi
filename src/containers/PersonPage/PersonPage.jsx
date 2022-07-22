@@ -15,6 +15,7 @@ import styles from './PersonPage.module.css'
 
 const PersonPage = ({ setErrorApi }) => {
   const { id } = useParams()
+  const [personId, setPersonId] = useState(null)
   const [personInfo, setPersonInfo] = useState(null)
   const [personName, setPersonName] = useState(null)
   const [personPhoto, setPersonPhoto] = useState(null)
@@ -32,9 +33,9 @@ const PersonPage = ({ setErrorApi }) => {
           { title: 'Eye Color', data: res.eye_color },
           { title: 'Birth Year', data: res.birth_year },
           { title: 'Gender', data: res.gender },
-        ]),
-          setPersonPhoto(getPeopleImage(id))
-
+        ])
+        setPersonId(id)
+        setPersonPhoto(getPeopleImage(id))
         setPersonName(res.name)
         setErrorApi(false)
       } else {
@@ -48,7 +49,7 @@ const PersonPage = ({ setErrorApi }) => {
       <BackButton />
       <h1>{personName}</h1>
       <div className={styles.small_container}>
-        <PersonImage personPhoto={personPhoto} personName={personName} />
+        <PersonImage personPhoto={personPhoto} personName={personName} personId={personId}/>
 
         {personInfo && <PersonInfo personInfo={personInfo} />}
       </div>
