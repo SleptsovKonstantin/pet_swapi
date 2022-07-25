@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import Favorite from '@components/Favorite'
 
 import styles from './Header.module.css'
 
@@ -8,25 +9,17 @@ const Header = () => {
     <div className={styles.container}>
       <ul className={styles.list__container}>
         <li>
-          <NavLink to="/" >
-            <a>Home</a>
-          </NavLink>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/people/?page=1">
-            <a>People</a>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/favorites" >
-            <a>Favorites</a>
-          </NavLink>
+          <NavLink to="/people/?page=1">People</NavLink>
         </li>
         <li>
           <NavLink to="/not-found" exact={'true'}>
-            <a>NotFoundPage</a>
+            NotFoundPage
           </NavLink>
         </li>
+      <Favorite />
       </ul>
     </div>
   )

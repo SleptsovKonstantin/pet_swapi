@@ -6,20 +6,30 @@ import { setPersonToFavorite, removePersonFromFavorites } from '@store/actions'
 
 import styles from './PersonImage.module.css'
 
-const PersonImage = ({ personPhoto, personName, personId}) => {
+const PersonImage = ({
+  personPhoto,
+  personName,
+  personId,
+  personFavorite,
+  setPersonFavorite,
+}) => {
   const dispatch = useDispatch()
 
   const set = () => {
-    dispatch(setPersonToFavorite({
-      [personId]:{
-        name: personName,
-        img: personPhoto
-      }
-    }))
+    dispatch(
+      setPersonToFavorite({
+        [personId]: {
+          name: personName,
+          img: personPhoto,
+        },
+      })
+    )
+    setPersonFavorite(true)
   }
 
   const remove = () => {
-    dispatch(removePersonFromFavorites())
+    dispatch(removePersonFromFavorites( personId))
+    setPersonFavorite(false)
   }
 
   return (
@@ -27,8 +37,11 @@ const PersonImage = ({ personPhoto, personName, personId}) => {
       <div>
         <img src={personPhoto} alt={personName} />
       </div>
-      <button onClick={set}>Добавить в избранное</button>
-      <button onClick={remove}>Удалить из избранного</button>
+      {personFavorite ? (
+        <button onClick={remove}>Удалить из избранного</button>
+        ) : (
+        <button onClick={set}>Добавить в избранное</button>
+      )}
     </>
   )
 }
@@ -37,6 +50,8 @@ PersonImage.propTypes = {
   personId: PropTypes.string,
   personPhoto: PropTypes.string,
   personName: PropTypes.string,
+  personFavorite: PropTypes.bool,
+  setPersonFavorite: PropTypes.func,
 }
 
 export default PersonImage
