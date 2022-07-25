@@ -22,7 +22,6 @@ const PersonPage = ({ setErrorApi }) => {
   const [personFavorite, setPersonFavorite] = useState(false)
 
   const storeDate = useSelector(state => state.favoriteReducer)
-  console.log('storeDate', storeDate);
 
   useEffect(() => {
     ;(async () => {

@@ -5,8 +5,7 @@ import {
 } from '@store/constants/actionTypes';
 
 const initialState = {}
-console.log('initialState', initialState);
-// getLocalStorage('store');
+
 const favoriteReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_PERSON_TO_FAVORITE:

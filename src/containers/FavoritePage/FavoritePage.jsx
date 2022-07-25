@@ -7,7 +7,6 @@ const FavoritePage = () => {
   const [people, setPeople] = useState([])
 
   const storeDate = useSelector((state) => state.favoriteReducer)
-  // console.log('storeDate', storeDate)
 
   useEffect(() => {
     const arr = Object.entries(storeDate)
