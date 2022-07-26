@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+}
+
+.cross {
+  width: 20px;
+  height: 20px;
+}
+
+img {
+  cursor: pointer;
+}

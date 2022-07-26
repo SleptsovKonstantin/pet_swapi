@@ -1,23 +1,22 @@
-import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import React, { useCallback, useEffect, useState } from 'react'
 import { getApiResourse } from '@utils/network'
 import { API_SEARCH } from '@constans/api'
 import { withErrorApi } from '@hoc-helpers/withErrorApi'
 import {
   getPeopleId,
   getPeopleImage,
-  getPeoplePageId,
 } from '@services/getPeopleData'
-import SearchPageInfo from '@components/SearchPage/SearchPageInfo'
+import { debounce } from 'lodash'
 import PeopleList from '@components/PeoplePage/PeopleList'
-import SearchNavigation from '@components/PeoplePage/SearchNavigation'
+
+import icon from './img/cross.png'
+
+import styles from './SearchPage.module.css'
 
 const SearchPage = ({ setErrorApi }) => {
   const [inputSearchValue, setInputSearchValue] = useState('')
   const [people, setPeople] = useState([])
-  const [prevPage, setPrevPage] = useState(null)
-  const [nextPage, setNextPage] = useState(null)
-  const [counterPage, setCounterPage] = useState(1)
 
   const getResponce = async (param) => {
     const res = await getApiResourse(API_SEARCH + param)
@@ -35,43 +34,52 @@ const SearchPage = ({ setErrorApi }) => {
         }
       })
       setPeople(peopleList)
-      setPrevPage(changeHTTP(res.previous))
-      setNextPage(changeHTTP(res.next))
-      setCounterPage(getPeoplePageId(url))
       setErrorApi(false)
     } else {
       setErrorApi(true)
     }
-
-
-    // setErrorApi(!res);
   }
+
+  useEffect(() => {
+    getResponce('')
+  }, [])
+
+  const debouncedGetResponce = useCallback(
+    debounce((value) => getResponce(value), 300),
+    []
+  )
 
   const handleInputChange = (event) => {
     const value = event.target.value
 
     setInputSearchValue(value)
-    getResponce(value)
+    debouncedGetResponce(value)
   }
 
   return (
-    <div>
-      <h1>Search</h1>
-      <input
-        type="text"
-        value={inputSearchValue}
-        onChange={handleInputChange}
-        placeholder="input characters name"
-      ></input>
-      {/* <SearchPageInfo people={people} /> */}
-      <SearchNavigation
-        getResponce={getResponce}
-        prevPage={prevPage}
-        nextPage={nextPage}
-        counterPage={counterPage}
-      />
+    <>
+      <div>
+        <h1>Search</h1>
+        <div className={styles.container}>
+          <input
+            type="text"
+            value={inputSearchValue}
+            onChange={handleInputChange}
+            placeholder="input characters name"
+          />
+          <img
+            onClick={() => { 
+              setInputSearchValue(''),
+              debouncedGetResponce('')}
+            }
+            src={icon}
+            className={styles.cross}
+            alt="Clear"
+          />
+        </div>
+      </div>
       <PeopleList people={people} />
-    </div>
+    </>
   )
 }
 
